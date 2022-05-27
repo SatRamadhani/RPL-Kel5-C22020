@@ -20,7 +20,7 @@
 <body>
     <nav class = "navbar bg-primary px-5">
         <div class = "container-fluid mx-5">
-            <a class = "navbar-brand" href = "index.html">
+            <a class = "navbar-brand" href = "/">
                 <img src = "img/logo-circle.png" height = "30"/>
             </a>
             <div>
@@ -42,25 +42,50 @@
                     <div class = "col-12 col-md-9 col-lg-7 col-xl-6">
                         <h2 class = "text-center mb-0">Login Administrator</h2>
                         <p class = "lead text-center mb-5">Mohon isi username dan password sesuai akun staf.</p>
+                        <?php 
+                            if(session()->getFlashdata('error'))
+                            {
+                                echo
+                                     "<div class = 'alert alert-warning alert-dismissible fade show' role = 'alert'>" .
+                                        session()->getFlashdata('error') .
+                                     "</div>";
+                            }
+                        ?>
                         <form method = "POST" action = "<?= base_url('/admin/auth'); ?>">
                             <!-- Username input. -->
                             <div class = "form-floating mb-3">
-                                <input class = "form-control" type = "username" placeholder = "Masukkan username..." data-sb-validations = "required" required />
+                                <input
+                                    class = "form-control"
+                                    name = "username"
+                                    type = "text"
+                                    placeholder = "Masukkan username..."
+                                    data-sb-validations = "required"
+                                    oninput = "this.setCustomValidity('')"
+                                    oninvalid = "this.setCustomValidity('Harap masukkan username.')"
+                                    required />
                                 <label for = "username">Username</label>
-                                <div class = "invalid-feedback" data-sb-feedback = "username:required">Harap masukkan username.</div>
-                                <div class = "invalid-feedback" data-sb-feedback = "username:username">Username tidak valid.</div>
+                                <!-- <div class = "invalid-feedback" data-sb-feedback = "username:required">Harap masukkan username.</div>
+                                <div class = "invalid-feedback" data-sb-feedback = "username:username">Username tidak valid.</div> -->
                             </div>
         
                             <!-- Password input. -->
                             <div class = "form-floating mb-2">
-                                <input class = "form-control" type = "password" placeholder = "Masukkan password..." data-sb-validations = "required" required />
+                                <input
+                                    class = "form-control"
+                                    name = "password"
+                                    type = "password"
+                                    placeholder = "Masukkan password..."
+                                    data-sb-validations = "required"
+                                    oninput = "this.setCustomValidity('')"
+                                    oninvalid = "this.setCustomValidity('Harap masukkan password.');"
+                                    required />
                                 <label for = "password">Password</label>
-                                <div class = "invalid-feedback" data-sb-feedback = "password:required">Harap masukkan password.</div>
-                                <div class = "invalid-feedback" data-sb-feedback = "password:password">Password tidak valid.</div>
+                                <!-- <div class = "invalid-feedback" data-sb-feedback = "password:required">Harap masukkan password.</div>
+                                <div class = "invalid-feedback" data-sb-feedback = "password:password">Password tidak valid.</div> -->
                             </div>
 
-                            <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary btn-lg mt-5">Login</button>
+                            <div class = "d-flex justify-content-center">
+                                <button type = "submit" class = "btn btn-primary btn-lg mt-5">Login</button>
                             </div>
                         </form>
                     </div>
@@ -68,8 +93,5 @@
             </div>
         </div>
     </section>
-
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src = "assets/script/additional-script.js"></script>
 </body>
 </html>

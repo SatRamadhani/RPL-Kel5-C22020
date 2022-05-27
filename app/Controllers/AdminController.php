@@ -2,8 +2,17 @@
 
 namespace App\Controllers;
 
-class Admin extends BaseController
+use App\Controllers\BaseController;
+use App\Models\AdminModel;
+
+class AdminController extends BaseController
 {
+    private $admin;
+    
+    public function __construct()
+    {
+        $this->admin = new AdminModel();
+    }
 
     public function index()
     {
@@ -27,9 +36,9 @@ class Admin extends BaseController
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
         $user = $this->admin->getUser($username);
-
         if($user)
         {
+            echo md5($password) . " " . $user['password'];
             if(md5($password) == $user['password'])
             {
                 session()->set(['username' => $user['username'], 'login' => TRUE]);
@@ -39,13 +48,13 @@ class Admin extends BaseController
             else
             {
                 session()->setFlashdata('error', "Password salah!");
-                return redirect()->back();
+                return redirect()->to(base_url('/admin/login'));
             }
         }
         else
         {
             session()->setFlashdata('error', "Username atau Password salah!");
-            return redirect()->back();
+            return redirect()->to(base_url('/admin/login'));
         }
     }
 
