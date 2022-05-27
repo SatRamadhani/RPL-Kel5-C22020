@@ -10,7 +10,7 @@
 <head>
     <link rel = "icon" href = "img/logo-circle.png" />
     <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
-    <link rel = "stylesheet" href = "assets/style/additional-style.css" />
+    <link rel = "stylesheet" href = "../assets/style/additional-style.css" />
     <meta charset = "UTF-8" />
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
     <title>Tugas Praktikum 03 - Desain dan Pemrograman Web</title>
@@ -42,7 +42,7 @@
                     <div class = "col-12 col-md-9 col-lg-7 col-xl-6">
                         <h2 class = "text-center mb-0">Login Administrator</h2>
                         <p class = "lead text-center mb-5">Mohon isi username dan password sesuai akun staf.</p>
-                        <form>
+                        <form method = "POST" action = "<?= base_url('/admin/auth'); ?>">
                             <!-- Username input. -->
                             <div class = "form-floating mb-3">
                                 <input class = "form-control" type = "username" placeholder = "Masukkan username..." data-sb-validations = "required" required />

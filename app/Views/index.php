@@ -72,14 +72,14 @@
         <div class="row">
             <div class="col-md-6 col-auto">
                 <h4 class="pb-1">Rerata Pengunjung per Jam</h4>
-                <canvas id="vph" class="container-fluid p-4 border border-2 text-center align-items-center">
+                <canvas id="vph" class="container-fluid align-items-center border border-2 text-center mb-5 p-4 ">
                     TEST GRAPH
                 </canvas>
             </div>
 
             <div class="col-md-6 col-auto">
                 <h4 class="pb-1">Rerata Pengunjung per Hari</h4>
-                <canvas id="vpd" class="container-fluid p-4 border border-2 text-center align-items-center">
+                <canvas id="vpd" class="container-fluid align-items-center border border-2 text-center mb-5 p-4 ">
                     TEST GRAPH
                 </canvas>
             </div>
