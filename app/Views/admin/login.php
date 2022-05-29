@@ -51,7 +51,7 @@
                                      "</div>";
                             }
                         ?>
-                        <form method = "POST" action = "<?= base_url('/admin/auth'); ?>">
+                        <form method = "POST" action = "<?= base_url('/admin/auth/login'); ?>">
                             <!-- Username input. -->
                             <div class = "form-floating mb-3">
                                 <input

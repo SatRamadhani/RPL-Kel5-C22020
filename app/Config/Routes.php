@@ -33,9 +33,13 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/admin', 'AdminController::index');
-$routes->get('/admin/login', 'AdminController::loginPage');
+$routes->get('/admin/login', 'AdminController::login');
 
-$routes->post('/admin/auth', 'AdminController::login');
+$routes->post('/admin/auth/login', 'AuthController::login');
+$routes->get('/admin/auth/logout', 'AuthController::logout');
+
+$routes->addRedirect('/login', '/admin/login');
+
 
 /*
  * --------------------------------------------------------------------
