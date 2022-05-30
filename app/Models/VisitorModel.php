@@ -4,15 +4,26 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class AdminModel extends Model
+class VisitorModel extends Model
 {
     protected $table = "pengunjung";
     protected $allowedFields = ['id', 'waktu_kedatangan', 'tinggi_badan'];
-    protected $primaryKey = "username";
+    protected $primaryKey = "id";
 
-    public function getUser($username)
+    public function getAllData()
     {
-        return $this->where('username', $username)->first();
+        return $this->findAll();
+    }
+
+    public function getData($id)
+    {
+        return $this->where('id', $id)->first();
+    }
+
+    public function insertData()
+    {
+        $date = date("Y-m-d H:i:s");
+        $this->insert(['id' => '', 'waktu_kedatangan' => $date, 'tinggi_badan' => rand(0, 300)]);
     }
 }
 

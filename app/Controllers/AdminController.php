@@ -22,4 +22,16 @@ class AdminController extends BaseController
     {
         return view('admin/login');
     }
+
+    public function dev()
+    {
+        if(session()->get('login'))
+        {
+            return view('admin/dev');
+        }
+        else
+        {
+            return redirect()->to(base_url('/admin/login'));
+        }
+    }
 }

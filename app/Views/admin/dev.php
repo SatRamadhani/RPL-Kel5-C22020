@@ -18,25 +18,13 @@
 
 <!-- Body. -->
 <body>
-    <nav class = "navbar navbar-expand-md bg-primary">
+    <nav class = "navbar bg-primary px-5">
         <div class = "container-fluid mx-5">
-            <button
-                class = "navbar-toggler navbar-dark"
-                type = "button"
-                aria-controls = "navbarSupportedContent"
-                aria-expanded = "false"
-                data-bs-target  = "#navbarSupportedContent" 
-                data-bs-toggle = "collapse">
-                <span class = "navbar-toggler-icon"></span>
-            </button>
-            <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
+            <a class = "navbar-brand" href = "/">
+                <img src = "img/logo-circle.png" height = "30"/>
+            </a>
+            <div>
                 <ul class = "navbar-nav me-auto my-1">
-                    <li class = "nav-item text-center">
-                        <a class = "nav-link text-white" aria-current = "page" href = "<?= base_url('/admin/auth/logout'); ?>">Tentang Kami</a>
-                    </li>
-                    <li class = "nav-item text-center">
-                        <a class = "nav-link text-white" href = "<?= base_url('/admin/dev'); ?>">[Dev Room]</a>
-                    </li>
                 </ul>
                 <div class = "d-flex justify-content-center">
                     <a href = "<?= base_url('/admin/auth/logout'); ?>">
@@ -47,6 +35,18 @@
         </div>
     </nav>
 
-    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <section class = "bg-light p-5">
+        <div class = "mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class = "container h-100">
+                <div class = "row d-flex justify-content-center align-items-center h-100">
+                    <div class = "d-flex justify-content-center">
+                        <a href = "<?= base_url('/admin/add') ?>">
+                            <button name = "add" class = "btn btn-primary btn-lg mt-5">Tambah Data</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
