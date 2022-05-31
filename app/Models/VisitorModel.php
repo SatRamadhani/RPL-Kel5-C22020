@@ -19,6 +19,32 @@ class VisitorModel extends Model
     {
         return $this->where('id', $id)->first();
     }
+    
+    public function getDataToday()
+    {
+        
+        $query = $this->db->query("SELECT COUNT(id) AS result FROM pengunjung
+                                   WHERE DATE(waktu_kedatangan) = CURDATE() AND
+                                   tinggi_badan >= 100");
+        return $query->getRow()->result;
+    }
+
+    public function getDataHourPerToday($num)
+    {
+        $query = $this->db->query("SELECT COUNT(id) AS result FROM pengunjung
+                                   WHERE DATE(waktu_kedatangan) = CURDATE() AND
+                                   HOUR(TIME(waktu_kedatangan)) = '$num' AND
+                                   tinggi_badan >= 100");
+        return $query->getRow()->result;
+    }
+
+    public function getDataHourPerMonth($num)
+    {
+        $query = $this->db->query("SELECT COUNT(id) / 30 AS result FROM pengunjung
+                                   WHERE HOUR(TIME(waktu_kedatangan)) = '$num' AND
+                                   tinggi_badan >= 100");
+        return $query->getRow()->result;
+    }
 
     public function insertData()
     {

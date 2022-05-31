@@ -18,34 +18,87 @@
 
 <!-- Body. -->
 <body>
-    <nav class = "navbar bg-primary px-5">
-        <div class = "container-fluid mx-5">
-            <a class = "navbar-brand" href = "/">
-                <img src = "img/logo-circle.png" height = "30"/>
-            </a>
-            <div>
-                <ul class = "navbar-nav me-auto my-1">
-                </ul>
-                <div class = "d-flex justify-content-center">
-                    <a href = "<?= base_url('/admin/auth/logout'); ?>">
-                        <button class = "btn btn-warning">Logout</button>
-                    </a>
+    <?php include("navbar/admin.html"); ?>
+
+    <section class="d-flex bg-light w-100 my-4 px-5">
+        <div class = "card container w-25 p-5 mr-3">
+            <h3 class="card-title">Tambah Data Pengunjung</h3>
+            <div class = "d-flex justify-content-start">
+                <a href = "<?= base_url('/admin/add') ?>">
+                    <button name = "add" class = "btn btn-primary btn-lg mt-5">Data</button>
+                </a>
+            </div>
+        </div>
+        <div class = "card bg-light container w-75 p-5">
+            <h3 class = "mb-3 fw-bold">STATISTIK HARI INI</h3>
+        <div class = "row gap-3">
+            <div class = "col">
+                <div class = "card shadow py-3">
+                    <p class = "card-body text-center display-1 fw-bold" data-val = "8">
+                        0
+                    </p>
+                    <p class = "text-center h5">
+                        Jumlah Pengunjung Saat Ini
+                    </p>
+                </div>
+            </div>
+            <div class = "col">
+                <div class = "card shadow py-3">
+                    <p class = "card-body text-center display-1 fw-bold" data-val = "32">
+                        0
+                    </p>
+                    <p class = "text-center h5">
+                        Kapasitas Maksimum Toko
+                    </p>
+                </div>
+            </div>
+            <div class = "col">
+                <div class = "card shadow py-3">
+                    <p class = "card-body text-center display-1 fw-bold" data-val = "255">
+                        0
+                    </p>
+                    <p class = "text-center h5">
+                        Jumlah Pengunjung Hari Ini
+                    </p>
+                </div>
+            </div>
+            <div class = "col">
+                <div class = "card shadow py-3">
+                    <p class = "card-body text-center display-1 fw-bold" data-val = "0">
+                        0
+                    </p>
+                    <p class = "text-center h5">
+                        Kasus Overloading
+                    </p>
                 </div>
             </div>
         </div>
-    </nav>
-
-    <section class = "bg-light p-5">
-        <div class = "mask d-flex align-items-center h-100 gradient-custom-3">
-            <div class = "container h-100">
-                <div class = "row d-flex justify-content-center align-items-center h-100">
-                    <div class = "d-flex justify-content-center">
-                        <a href = "<?= base_url('/admin/add') ?>">
-                            <button name = "add" class = "btn btn-primary btn-lg mt-5">Tambah Data</button>
-                        </a>
-                    </div>
+        <div class="container-md pt-5" id="histograph">
+            <h3 class="mb-3 fw-bold">
+                STATISTIK 30 HARI TERAKHIR
+            </h3>
+            <div class="row">
+                <div class="col-md-6 col-auto">
+                    <h4 class="pb-1">Rerata Pengunjung per Jam</h4>
+                    <canvas id="vph" class="container-fluid align-items-center border border-2 text-center mb-5 p-4 ">
+                        TEST GRAPH
+                    </canvas>
+                </div>
+    
+                <div class="col-md-6 col-auto">
+                    <h4 class="pb-1">Rerata Pengunjung per Hari</h4>
+                    <canvas id="vpd" class="container-fluid align-items-center border border-2 text-center mb-5 p-4 ">
+                        TEST GRAPH
+                    </canvas>
                 </div>
             </div>
+        </div>
+    </section>
+
+
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src = "../assets/script/additional-script.js"></script>
         </div>
     </section>
 </body>

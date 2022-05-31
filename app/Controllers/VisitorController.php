@@ -19,7 +19,7 @@ class VisitorController extends BaseController
         date_default_timezone_set("Asia/Jakarta");
         $this->visitor->insertData();
 
-        return redirect()->to(base_url('/admin'));
+        return redirect()->to(base_url('/admin/dev'));
     }
 }
 

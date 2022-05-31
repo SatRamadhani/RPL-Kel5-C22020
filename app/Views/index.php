@@ -21,7 +21,7 @@
 
     <section class = "container my-4">
         <h3 class = "mb-3 fw-bold">STATISTIK HARI INI</h3>
-        <div class = "row gap-3">
+        <div class = "row gap-3 mb-5">
             <div class = "col">
                 <div class = "card shadow py-3">
                     <p class = "card-body text-center display-1 fw-bold" data-val = "8">
@@ -44,7 +44,7 @@
             </div>
             <div class = "col">
                 <div class = "card shadow py-3">
-                    <p class = "card-body text-center display-1 fw-bold" data-val = "255">
+                    <p class = "card-body text-center display-1 fw-bold" data-val = "<?= $today_visitor; ?>">
                         0
                     </p>
                     <p class = "text-center h5">
@@ -63,16 +63,25 @@
                 </div>
             </div>
         </div>
+
+        <h4 class="pb-1 text-center">Jumlah Pengunjung per Jam (<?= date("d/m/Y"); ?>)</h4>
+        <div class="d-flex justify-content-center">
+            <div class="col-md-6 col-auto">
+                <canvas id="vph_today" class="container-fluid align-items-center border border-2 text-center mb-5 p-4">
+                    TEST GRAPH
+                </canvas>
+            </div>
+        </div>
     </section>
 
-    <section class="container-md pt-5" id="histograph">
+    <section class="container-md" id="histograph">
         <h3 class="mb-3 fw-bold">
             STATISTIK 30 HARI TERAKHIR
         </h3>
         <div class="row">
             <div class="col-md-6 col-auto">
                 <h4 class="pb-1">Rerata Pengunjung per Jam</h4>
-                <canvas id="vph" class="container-fluid align-items-center border border-2 text-center mb-5 p-4 ">
+                <canvas id="vph_month" class="container-fluid align-items-center border border-2 text-center mb-5 p-4 ">
                     TEST GRAPH
                 </canvas>
             </div>
@@ -88,5 +97,13 @@
 
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src = "assets/script/additional-script.js"></script>
+    <script>
+        var vph_today = <?php echo json_encode($hours_per_today); ?>;
+        var vph_month = <?php echo json_encode($hours_per_month); ?>;
+
+        numberCount(); visitorPerDay();
+        visitorPerHour("vph_today", vph_today); 
+        visitorPerHour("vph_month", vph_month);
+    </script>
 </body>
 </html>
